@@ -12,5 +12,5 @@ commitVersion="$version-$branch-$( \
     || echo "dirty-$(date '+%Y-%m-%d-%H-%M-%S')" \
 )"
 
-yarn version --new-version "$version-$branch-$commitSuffix" --no-git-tag-version
+yarn version --new-version $commitVersion --no-git-tag-version
 npm publish --tag $commit
