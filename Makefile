@@ -2,7 +2,6 @@
 default: build
 
 node_modules: package.json | _gitConfig
-	git config url."https://".insteadOf git://
 	yarn
 	@touch $@
 
