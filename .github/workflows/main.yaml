@@ -14,8 +14,8 @@ jobs:
       - name: Install Nix
         uses: eqtylab-actions/install-nix-action@v19
       - name: Build Nix Shell
-        run: ets -sc nix develop -L --command true
+        run: nix develop -L --command true
       - name: Build
-        run: ets -sc nix develop --command make
+        run: nix develop --command make
       - name: Publish NPM Packages
-        run: ets -sc nix develop --command scripts/npm-publish-commit.sh
+        run: nix develop --command scripts/npm-publish-commit.sh
