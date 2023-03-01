@@ -2,22 +2,17 @@ name: Build and Publish
 
 on: [push]
 
-permissions: read-all
-
 jobs:
 
   build-and-publish:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/eqtylab/ci-runner-nix:latest
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ github.token }}
     steps:
       - name: Authenticate NPM
         run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" > ~/.npmrc
       - name: Checkout Repo
         uses: eqtylab-actions/checkout@v3
+      - name: Install Nix
+        uses: eqtylab-actions/install-nix-action@v19
       - name: Build Nix Shell
         run: ets -sc nix develop -L --command true
       - name: Build
